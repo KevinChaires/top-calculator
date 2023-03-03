@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    background-color: lightblue;
+}
+.calculator{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+
+    background-color: black;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    width: 600px;
+    
+    border-radius: 12px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -500px;
+    margin-left: -325px;
+
+
+    padding: 20px;
+}
+
+.screen{
+    background-color: lightgray;
+    margin-top: 12px;
+    margin-bottom: 12px;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 55px;
+    text-align: center;
+    
+    flex: 0 1 84%;
+    border-radius: 12px;
+    height: 100px;
+    padding: 12px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+}
+
+button{
+    padding: 24px;
+    font-size: 40px;
+    border-radius: 1000px;
+    font-weight: bold;
+    width: 100px;
+    height: 100px;
+    flex: 0 1 20%;
+    border-style: none;
+}
+
+.opButton{
+    background-color: orange;
+    align-self: flex-start;
+}
+
+.opButton:hover{
+    background-color: #e89802;
+}
+
+.numButton{
+    background-color: white;
+    align-self:flex-start;
+}
+
+.zeroButton{
+    background-color: white;
+    flex: 0 1 42%;
+    margin-bottom: 64px;
+}
+
+.numButton:hover, .zeroButton:hover{
+    background-color: ghostwhite;
+}
+
+.numButton:active, .zeroButton:active, .opButton:active{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.nameButton{
+    flex: 0 1 42%;
+    font-size: 24px;
+}

@@ -41,7 +41,7 @@ function operate(operation, firstNumber, secondNumber){
     return currentOperation;
 }
 
-firstNumber = parseFloat(prompt("First number?"));
-operation = prompt("Add, substract multiply, or divide?");
-secondNumber = parseFloat(prompt("Second number?"));
-console.log(operate(operation, firstNumber, secondNumber));
+//firstNumber = parseFloat(prompt("First number?"));
+//operation = prompt("Add, substract multiply, or divide?");
+//secondNumber = parseFloat(prompt("Second number?"));
+//console.log(operate(operation, firstNumber, secondNumber));
