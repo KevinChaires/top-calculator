@@ -45,3 +45,16 @@ function operate(operation, firstNumber, secondNumber){
 //operation = prompt("Add, substract multiply, or divide?");
 //secondNumber = parseFloat(prompt("Second number?"));
 //console.log(operate(operation, firstNumber, secondNumber));
+
+
+//Pantalla
+let screenNumber = document.querySelector("#screenNumber");
+screenNumber.textContent = '0';
+
+//Test
+const buttons = document.querySelectorAll(".btn");
+for(const button of buttons){
+    button.addEventListener('click', function(){
+        console.log(this.value);
+    });
+}
