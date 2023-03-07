@@ -68,9 +68,10 @@ for(const button of buttons){
                 operation = " ";
                 break;
             case 'backspace':
-                console.log(screenNumber.textContent);
-                screenNumber.textContent = screenNumber.textContent.slice(0, -1);
-                console.log(screenNumber.textContent);
+                if(screenNumber.textContent.length > 1){
+                    console.log(screenNumber.textContent.length);
+                    screenNumber.textContent = screenNumber.textContent.slice(0, -1);    
+                }
                 break;
             case 'divide': //Divide
                 operationWork();    
@@ -152,12 +153,17 @@ function operationWork(){ //Operaciones
     secondNumber = " "; //vaciar segundo numero
 }
 
-document.addEventListener("keypress", function(event){ //Teclado
+document.addEventListener("keydown", function(event){ //Teclado
     switch(event.key){
         case 'C': case 'c':
             event.preventDefault();
             document.getElementById('btnC').click();
-            break;            
+            break;  
+        case 'Backspace':
+            console.log('work>');
+            event.preventDefault();
+            document.getElementById('btnBac').click();
+            break;          
         case '/':
             event.preventDefault();
             document.getElementById('btnDiv').click();
