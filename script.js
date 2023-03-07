@@ -64,13 +64,13 @@ for(const button of buttons){
         actual = this.value;
         switch(actual){
             case 'Creator':
+                break;
+            case 'C': //Clear
                 writeMode = false;
                 screenNumber.textContent = '0';
                 firstNumber = " ";
                 secondNumber = " ";
                 operation = " ";
-                break;
-            case 'C': //Clear
                 break;
             case 'divide': //Divide
                 operationWork();    
@@ -152,3 +152,39 @@ function operationWork(){
     secondNumber = " "; //vaciar segundo numero
 }
 
+document.addEventListener("keypress", function(event){
+    switch(event.key){
+        case 'C': case 'c':
+            event.preventDefault();
+            document.getElementById('btnC').click();
+            break;            
+        case '/':
+            event.preventDefault();
+            document.getElementById('btnDiv').click();
+            break;
+        case 'X': case 'x': case '*':
+            event.preventDefault();
+            document.getElementById('btnMul').click();
+            break;
+        case '-':
+            event.preventDefault();
+            document.getElementById('btnSub').click();
+            break;
+        case '+':
+            event.preventDefault();
+            document.getElementById('btnAdd').click();
+            break;
+        case '=': case 'Enter':
+            event.preventDefault();
+            document.getElementById('btnEqu').click();
+            break;
+        case '.':
+            event.preventDefault();
+            document.getElementById('dot').click();
+        case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9': case '0':
+            event.preventDefault();
+            document.getElementById(`btn${event.key}`).click();
+        default:
+            console.log("Pressed: "+ event.key);
+    }
+})
