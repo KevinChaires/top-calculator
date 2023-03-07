@@ -50,6 +50,9 @@ function operate(){
 let screenNumber = document.querySelector("#screenNumber");
 screenNumber.textContent = '0';
 
+//Punto
+let perButton = document.getElementById("dot");
+
 let actual = "";
 let currentNumber = "";
 let writeMode = false;
@@ -113,6 +116,8 @@ for(const button of buttons){
                     firstNumber = " ";
                     secondNumber = " "; 
                 }
+                let periodTest = screenNumber.textContent;
+                periodTest.includes(".") ? perButton.disabled = true : perButton.disabled = false;
                 break;    
         }
     })
