@@ -66,6 +66,8 @@ for(const button of buttons){
                 firstNumber = " ";
                 secondNumber = " ";
                 operation = " ";
+                equalButton.disabled = false;
+                returnButton.disabled = false;
                 break;
             case 'backspace':
                 if(screenNumber.textContent.length > 1){
@@ -105,6 +107,8 @@ for(const button of buttons){
                 }
                 break;
             default: //Numeros
+                equalButton.disabled = false;
+                returnButton.disabled = false;
                 console.log(actual); //Decir numero introducido
                 if(!writeMode){ //Si esta apagado
                     screenNumber.textContent = actual; //Remplazar
@@ -124,6 +128,9 @@ for(const button of buttons){
     })
 }
 
+let equalButton = document.getElementById("btnEqu");
+let returnButton = document.getElementById("btnBac");
+
 function operateResult(){ //Igual u opcion repetida
     let temp = " ";
     if(secondNumber == " "){ //si el segundo esta vacion
@@ -132,6 +139,8 @@ function operateResult(){ //Igual u opcion repetida
     temp = operate();
     if(secondNumber == "0" && operation == "divide"){
         screenNumber.textContent = "Haha";
+        equalButton.disabled = true;
+        returnButton.disabled = true;
     }
     else{
         let periodTest = temp.toString();

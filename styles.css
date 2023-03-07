@@ -5,12 +5,16 @@ body{
     margin: 0;
     font-family: sans-serif;
     background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .calculator{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    
     gap: 12px;
 
 
@@ -33,13 +37,13 @@ body{
 .screen{
     background-color: lightgray;
     margin-top: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 64px;
 
     font-family: "Orbitron", sans-serif;
     font-size: 55px;
     text-align: center;
     
-    flex: 0 1 84%;
+    flex: 1 1 84%;
     border-radius: 12px;
     height: 100px;
     padding: 12px;
