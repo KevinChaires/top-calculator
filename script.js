@@ -134,7 +134,13 @@ function operateResult(){ //Igual u opcion repetida
         screenNumber.textContent = "Haha";
     }
     else{
-        screenNumber.textContent = temp.toFixed(5); //operar y mostrar en pantalla
+        let periodTest = temp.toString();
+        if(periodTest.includes('.')){
+            screenNumber.textContent = temp.toFixed(5);
+        }
+        else{
+            screenNumber.textContent = temp.toFixed(0); //operar y mostrar en pantalla
+        }
     }
     firstNumber = parseFloat(screenNumber.textContent); //guardar en primer numero
 }
