@@ -40,12 +40,6 @@ function operate(){
     return currentOperation;
 }
 
-//firstNumber = parseFloat(prompt("First number?"));
-//operation = prompt("Add, substract multiply, or divide?");
-//secondNumber = parseFloat(prompt("Second number?"));
-//console.log(operate(operation, firstNumber, secondNumber));
-
-
 //Pantalla
 let screenNumber = document.querySelector("#screenNumber");
 screenNumber.textContent = '0';
@@ -64,6 +58,7 @@ for(const button of buttons){
         actual = this.value;
         switch(actual){
             case 'Creator':
+                console.log('Created by Kevin Chaires during The Odin Project 2023');
                 break;
             case 'C': //Clear
                 writeMode = false;
@@ -71,6 +66,11 @@ for(const button of buttons){
                 firstNumber = " ";
                 secondNumber = " ";
                 operation = " ";
+                break;
+            case 'backspace':
+                console.log(screenNumber.textContent);
+                screenNumber.textContent = screenNumber.textContent.slice(0, -1);
+                console.log(screenNumber.textContent);
                 break;
             case 'divide': //Divide
                 operationWork();    
@@ -116,14 +116,14 @@ for(const button of buttons){
                     firstNumber = " ";
                     secondNumber = " "; 
                 }
-                let periodTest = screenNumber.textContent;
+                let periodTest = screenNumber.textContent; //Solo un punto
                 periodTest.includes(".") ? perButton.disabled = true : perButton.disabled = false;
                 break;    
         }
     })
 }
 
-function operateResult(){
+function operateResult(){ //Igual u opcion repetida
     let temp = " ";
     if(secondNumber == " "){ //si el segundo esta vacion
         secondNumber = parseFloat(screenNumber.textContent); //guardar en segundo numero
@@ -138,7 +138,7 @@ function operateResult(){
     firstNumber = parseFloat(screenNumber.textContent); //guardar en primer numero
 }
 
-function operationWork(){
+function operationWork(){ //Operaciones
     if(firstNumber == " "){ //si el primero esta vacio
         console.log("this");
         firstNumber = parseFloat(screenNumber.textContent); //llenar el primero
@@ -152,7 +152,7 @@ function operationWork(){
     secondNumber = " "; //vaciar segundo numero
 }
 
-document.addEventListener("keypress", function(event){
+document.addEventListener("keypress", function(event){ //Teclado
     switch(event.key){
         case 'C': case 'c':
             event.preventDefault();
