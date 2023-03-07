@@ -1,7 +1,6 @@
 let firstNumber = " ";
 let secondNumber = " ";
-let result = 0;
-let operation = "";
+let operation = " ";
 
 function add (firstNumber, secondNumber){
     return firstNumber + secondNumber;
@@ -19,7 +18,7 @@ function divide(firstNumber, secondNumber){
     return firstNumber / secondNumber;
 }
 
-function operate(operation, firstNumber, secondNumber){
+function operate(){
     let currentOperation = 0;
     switch(operation){
         case "add":
@@ -35,7 +34,7 @@ function operate(operation, firstNumber, secondNumber){
             currentOperation += divide(firstNumber, secondNumber);
             break;
         default:
-            alert("Error");
+            console.log("error");
             break;
     }
     return currentOperation;
@@ -53,114 +52,98 @@ screenNumber.textContent = '0';
 
 let actual = "";
 let currentNumber = "";
-let operationMode = "false";
-
+let writeMode = false;
+let repeatCounter = 0; 
 
 const buttons = document.querySelectorAll(".btn");
 for(const button of buttons){
     button.addEventListener('click', function(){
         actual = this.value;
         switch(actual){
-            case 'C':
-                console.log(actual);
+            case 'Creator':
+                writeMode = false;
+                screenNumber.textContent = '0';
                 firstNumber = " ";
                 secondNumber = " ";
-                result = 0;
-                operation = "";
-                actual = "";
-                currentNumber = "";
-                operationMode = "false";
-                screenNumber.textContent = "0";
+                operation = " ";
                 break;
-            
-            case 'divide':
-                console.log(actual);
-                operationMode = "true";
+            case 'C': //Clear
+                break;
+            case 'divide': //Divide
+                operationWork();    
                 operation = "divide";
-                if(firstNumber == " "){
-                    firstNumber = parseFloat(currentNumber);
-                }
-                else{
-                    secondNumber = parseFloat(currentNumber);
-                    result = operate(operation, firstNumber, secondNumber);
-                    screenNumber.textContent = result;
-                    firstNumber = result;
-                    secondNumber = " ";
-                }
                 break;
-
             case 'multiply':
-                console.log(actual);
-                operationMode = "true";
+                operationWork();
                 operation = "multiply";
-                if(firstNumber == " "){
-                    firstNumber = parseFloat(currentNumber);
-                }
-                else{
-                    secondNumber = parseFloat(currentNumber);
-                    result = operate(operation, firstNumber, secondNumber);
-                    screenNumber.textContent = result;
-                    firstNumber = result;
-                    secondNumber = " ";
-                }
                 break;
-            
             case 'substract':
-                console.log(actual);
-                operationMode = "true";
+                operationWork();
                 operation = "substract";
-                if(firstNumber == " "){
-                    firstNumber = parseFloat(currentNumber);
-                }
-                else{
-                    secondNumber = parseFloat(currentNumber);
-                    result = operate(operation, firstNumber, secondNumber);
-                    screenNumber.textContent = result;
-                    firstNumber = result;
-                    secondNumber = " ";
-                }
                 break;
-
             case 'add':
-                operationMode = "true";
-                operation = "add";
-                console.log(actual);
-                if(firstNumber == " "){
-                    firstNumber = parseFloat(currentNumber);
-                    console.log("suma - firstNumber: " + firstNumber);
-                }
-                else{
-                    secondNumber = parseFloat(currentNumber);
-                    result = operate(operation, firstNumber, secondNumber);
-                    screenNumber.textContent = result;
-                    firstNumber = result;
-                    secondNumber = " ";
-                }
+                operationWork();
+                operation = "add"; //dice que la operacion es suma
                 break;
-            
             case 'equals':
-                console.log(actual);
-                secondNumber = parseFloat(currentNumber);
-                if(operation == ""){
-                    console.log("perame") //FALTA
+                writeMode = false; //apagar
+                console.log(operation);
+                if(firstNumber == ' '){ //si no hay primer numero
+                    console.log("No hay primer numero");
+                    //edit
+                }
+                else if(operation == " "){
+                    console.log("No hay operacion determinada");
+                    //edit
                 }
                 else{
-                    result = operate(operation, firstNumber, secondNumber);
-                    screenNumber.textContent = result;
-                    firstNumber = result;
-                    secondNumber = " ";
+                    operateResult();
                 }
-                break;
-
-            case 'Creator':
-                console.log(actual);
                 break;
             default: //Numeros
-                console.log("Number " + actual);
-                operationMode == "true" ? currentNumber = actual : currentNumber += actual;
-                operationMode = "false";
-                console.log(currentNumber);
-                screenNumber.textContent = currentNumber;
-                break;
+                console.log(actual); //Decir numero introducido
+                if(!writeMode){ //Si esta apagado
+                    screenNumber.textContent = actual; //Remplazar
+                    writeMode = true; //prender
+                }
+                else{
+                    screenNumber.textContent += actual; //anadirle
+                }
+                if(firstNumber != " " && secondNumber != " "){
+                    firstNumber = " ";
+                    secondNumber = " "; 
+                }
+                break;    
         }
-    })};
+    })
+}
+
+function operateResult(){
+    let temp = " ";
+    if(secondNumber == " "){ //si el segundo esta vacion
+        secondNumber = parseFloat(screenNumber.textContent); //guardar en segundo numero
+    }
+    temp = operate();
+    if(secondNumber == "0" && operation == "divide"){
+        screenNumber.textContent = "Haha";
+    }
+    else{
+        screenNumber.textContent = temp.toFixed(5); //operar y mostrar en pantalla
+    }
+    firstNumber = parseFloat(screenNumber.textContent); //guardar en primer numero
+}
+
+function operationWork(){
+    if(firstNumber == " "){ //si el primero esta vacio
+        console.log("this");
+        firstNumber = parseFloat(screenNumber.textContent); //llenar el primero
+    }
+    else if(writeMode == true){
+        console.log("else");
+        secondNumber = " "; //vaciar segundo numero
+        operateResult();
+    }
+    writeMode = false; //apagar
+    secondNumber = " "; //vaciar segundo numero
+}
+
